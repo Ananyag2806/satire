@@ -15,8 +15,17 @@ for row in data:
         ideal_generated_text = row[0]
         # Create a dictionary for each pair and append it to the list
         pair = {
-            "prompt": prompt_text,
-            "completion": ideal_generated_text
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "generate satirical, witty, ironic, comedic, sarcastic headlines/sentences that have rich vocabulary from the prompt"
+                },
+                {"role": "user", "content": prompt_text},
+                {
+                    "role": "assistant",
+                    "content": ideal_generated_text
+                }
+            ]
         }
         pairs.append(pair)
 
